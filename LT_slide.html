@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="@y__mattu" />
-  <title>パッケージ作った(仮)</title>
+  <title>パッケージを作った(仮)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -487,61 +487,61 @@ document.getElementsByTagName('head')[0].appendChild(style);
     <div class="slides">
 
 <section>
-    <h1 class="title">パッケージ作った(仮)</h1>
+    <h1 class="title">パッケージを作った(仮)</h1>
   <h1 class="subtitle">Tokyo.R #59 LT</h1>
     <h2 class="author"><span class="citation" data-cites="y__mattu">@y__mattu</span></h2>
     <h3 class="date">2017/3/18</h3>
 </section>
 
-<section><section id="iae" class="titleslide slide level1"><h1>¤Ï¤¸¤á¤Ë</h1></section><section id="eo" class="slide level2">
-<h1>¼«¸Ê¾Ò²ð</h1>
+<section><section class="titleslide slide level1"><h1>はじめに</h1></section><section class="slide level2">
+<h1>自己紹介</h1>
 <div class="column1">
 <ul>
-<li>¾¾Â¼Í¥ºÈ(<span class="citation" data-cites="y__mattu">@y__mattu</span>)</li>
-<li>Âç³Ø 4 Ç¯À¸</li>
-<li>·×ÎÌ·ÐºÑ³Ø¡¢¥Ù¥¤¥ºÅý·×¡¢°ø²Ì¿äÏÀ¡¢¥Þ¡¼¥±¥Æ¥£¥ó¥°</li>
-<li>¸À¸ì: R, SAS, Python</li>
-<li>¶á¶·: ¤â¤¦¤¹¤°Â´¶È &amp; ¿Ê³Ø</li>
+<li>松村優哉(<span class="citation" data-cites="y__mattu">@y__mattu</span>)</li>
+<li>大学 4 年生</li>
+<li>計量経済学、ベイズ統計、因果推論、マーケティング</li>
+<li>言語: R, SAS, Python</li>
+<li>近況: もうすぐ卒業 &amp; 進学</li>
 </ul>
 </div>
 <div class="column2">
 <p><img src="img/twitter_icon.jpg" alt="icon" /></p>
 </div>
 </section></section>
-<section><section id="naoia" class="titleslide slide level1"><h1>¥Ñ¥Ã¥±¡¼¥¸¤òºî¤Ã¤¿</h1></section><section id="ina" class="slide level2">
-<h1>²¿¤Î¥Ñ¥Ã¥±¡¼¥¸¤«</h1>
+<section><section class="titleslide slide level1"><h1>パッケージを作った</h1></section><section class="slide level2">
+<h1>何のパッケージか</h1>
 <ul>
 <li>MlBayesOpt(<a href="https://github.com/ymattu/MlBayesOpt" class="uri">https://github.com/ymattu/MlBayesOpt</a>)</li>
-<li>µ¡³£³Ø½¬¤Î¥Ù¥¤¥ººÇÅ¬²½¤Ë¤è¤ë¥Ñ¥é¥á¡¼¥¿¥Á¥å¡¼¥Ë¥ó¥°¤ò³Ú¤Ë½ñ¤¯¥Ñ¥Ã¥±¡¼¥¸</li>
-<li>SVM(RBF ¥«¡¼¥Í¥ë)¡¢¥é¥ó¥À¥à¥Õ¥©¥ì¥¹¥È¡¢ XGboost ¤ËÂÐ±þ</li>
-<li>¥Ù¡¼¥¹¥Ñ¥Ã¥±¡¼¥¸¤Ï SVM(e1071), RF(ranger), XGboost(xgboost)</li>
-<li>ÀºÅÙÉ¾²Á¤Ï¥Û¡¼¥ë¥É¡¦¥¢¥¦¥È¸¡¾Ú</li>
+<li>機械学習のベイズ最適化によるパラメータチューニングを楽に書くパッケージ</li>
+<li>SVM(RBF カーネル)、ランダムフォレスト、XGboost に対応</li>
+<li>ベースパッケージは SVM(e1071), RF(ranger), XGboost(xgboost)</li>
+<li>精度評価はホールド・アウト検証</li>
 </ul>
-</section><section id="ce" class="slide level2">
-<h1>ÇØ·Ê</h1>
+</section><section class="slide level2">
+<h1>背景</h1>
 <ul>
-<li>¥Ù¥¤¥ººÇÅ¬²½¤Î¥Ñ¥Ã¥±¡¼¥¸¤Ï¤â¤È¤â¤È¤¢¤Ã¤¿({rBayesianOptimization})</li>
-<li>µ¡³£³Ø½¬¤Î¥Ñ¥é¥á¡¼¥¿¥Á¥å¡¼¥Ë¥ó¥°¤â¤Ç¤­¤¿</li>
-<li>¤Ç¤â¾¯¤·ÂçÊÑ¤À¤Ã¤¿</li>
+<li>ベイズ最適化のパッケージはもともとあった({rBayesianOptimization})</li>
+<li>機械学習のパラメータチューニングもできた</li>
+<li>でも少し大変だった</li>
 </ul>
-</section><section id="iciucaia-xgboost" class="slide level2">
-<h1>¤³¤ì¤Þ¤Ç¤Î¥Ù¥¤¥ººÇÅ¬²½(Îã: XGboost)</h1>
+</section><section id="-xgboost" class="slide level2">
+<h1>これまでのベイズ最適化(例: XGboost)</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(xgboost)
 <span class="kw">library</span>(Matrix)
 <span class="kw">library</span>(rBayesianOptimization)
 
 odd.n &lt;-<span class="st"> </span><span class="dv">2</span>*(<span class="dv">1</span>:<span class="dv">75</span>)-<span class="dv">1</span>
-iris_train &lt;-<span class="st"> </span>iris[odd.n, ] <span class="co"># ´ñ¿ô¤ò·±Îý¥Ç¡¼¥¿</span>
-iris_test &lt;-<span class="st"> </span>iris[-odd.n, ] <span class="co"># ¶ö¿ô¤ò¸¡¾Ú¥Ç¡¼¥¿</span></code></pre></div>
-</section><section id="iciucaia-xgboost-1" class="slide level2">
-<h1>¤³¤ì¤Þ¤Ç¤Î¥Ù¥¤¥ººÇÅ¬²½(Îã: XGboost)</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ¥Ç¡¼¥¿¥»¥Ã¥È¤ò xgboost ¤Ç°·¤¨¤ë·Á¼°¤ËÄ¾¤¹</span>
+iris_train &lt;-<span class="st"> </span>iris[odd.n, ] <span class="co"># 奇数を訓練データ</span>
+iris_test &lt;-<span class="st"> </span>iris[-odd.n, ] <span class="co"># 偶数を検証データ</span></code></pre></div>
+</section><section id="-xgboost-1" class="slide level2">
+<h1>これまでのベイズ最適化(例: XGboost)</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># データセットを xgboost で扱える形式に直す</span>
 train.mx &lt;-<span class="st"> </span><span class="kw">sparse.model.matrix</span>(Species ~., iris_train)
 test.mx &lt;-<span class="st"> </span><span class="kw">sparse.model.matrix</span>(Species ~<span class="st"> </span>., iris_test)
 dtrain &lt;-<span class="st"> </span><span class="kw">xgb.DMatrix</span>(train.mx, <span class="dt">label =</span> <span class="kw">as.integer</span>(iris_train$Species) -<span class="st"> </span><span class="dv">1</span>)
 dtest &lt;-<span class="st"> </span><span class="kw">xgb.DMatrix</span>(test.mx, <span class="dt">label =</span> <span class="kw">as.integer</span>(iris_test$Species) -<span class="st"> </span><span class="dv">1</span>)
 
-<span class="co"># ºÇÂç²½¤¹¤ë´Ø¿ô¤ÎºîÀ®</span>
+<span class="co"># 最大化する関数の作成</span>
 xgb_holdout &lt;-<span class="st"> </span>function(ex, mx, nr){
     model &lt;-<span class="st"> </span><span class="kw">xgb.train</span>(<span class="dt">params=</span><span class="kw">list</span>(<span class="dt">objective =</span> <span class="st">&quot;multi:softmax&quot;</span>, <span class="dt">num_class =</span> <span class="dv">10</span>, <span class="dt">eval_metric =</span> <span class="st">&quot;mlogloss&quot;</span>,
                                    <span class="dt">eta =</span> ex, <span class="dt">max_depth =</span> mx),
@@ -550,23 +550,23 @@ xgb_holdout &lt;-<span class="st"> </span>function(ex, mx, nr){
     Pred &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">diag</span>(<span class="kw">table</span>(test$label, t.pred)))/<span class="kw">nrow</span>(test)
     <span class="kw">list</span>(<span class="dt">Score =</span> Pred, <span class="dt">Pred =</span> Pred)
 }</code></pre></div>
-</section><section id="iciucaia-xgboost-2" class="slide level2">
-<h1>¤³¤ì¤Þ¤Ç¤Î¥Ù¥¤¥ººÇÅ¬²½(Îã: XGboost)</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ¥Ù¥¤¥ººÇÅ¬²½</span>
+</section><section id="-xgboost-2" class="slide level2">
+<h1>これまでのベイズ最適化(例: XGboost)</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ベイズ最適化</span>
 opt_xgb &lt;-<span class="st"> </span><span class="kw">BayesianOptimization</span>(xgb_holdout,
                                 <span class="dt">bounds=</span><span class="kw">list</span>(<span class="dt">ex =</span> <span class="kw">c</span>(2L,5L), <span class="dt">mx =</span> <span class="kw">c</span>(4L,5L), <span class="dt">nr =</span> <span class="kw">c</span>(70L,160L)),
                                 <span class="dt">init_points =</span> <span class="dv">20</span>, <span class="dt">n_iter =</span> <span class="dv">1</span>, <span class="dt">acq =</span> <span class="st">&#39;ei&#39;</span>, <span class="dt">kappa =</span> <span class="fl">2.576</span>,
                                 <span class="dt">eps =</span> <span class="fl">0.0</span>, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p>Ä¹¤¤! ¤â¤Ã¤ÈÃ»¤¯!</p>
+<p>長い! もっと短く!</p>
 </section></section>
-<section><section id="mlbayesopt" class="titleslide slide level1"><h1>{MlBayesOpt}</h1></section><section id="oeeee" class="slide level2">
-<h1>¥¤¥ó¥¹¥È¡¼¥ë¤ÈÆÉ¤ß¹þ¤ß</h1>
-<h3 id="oee">¥¤¥ó¥¹¥È¡¼¥ë</h3>
+<section><section id="mlbayesopt" class="titleslide slide level1"><h1>{MlBayesOpt}</h1></section><section class="slide level2">
+<h1>インストールと読み込み</h1>
+<h3>インストール</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;ymattu/MlBayesOpt&quot;</span>)</code></pre></div>
-<h3 id="e">ÆÉ¤ß¹þ¤ß</h3>
+<h3>読み込み</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MlBayesOpt)</code></pre></div>
 </section></section>
-<section><section id="eey" class="titleslide slide level1"><h1>»È¤¤Êý</h1></section><section id="svm" class="slide level2">
+<section><section class="titleslide slide level1"><h1>使い方</h1></section><section id="svm" class="slide level2">
 <h1>SVM</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123</span>)
 
@@ -577,22 +577,22 @@ res &lt;-<span class="st"> </span><span class="kw">svm_opt</span>(
   <span class="dt">test_label =</span> iris_test$Species,
   <span class="dt">acq =</span> <span class="st">&quot;ucb&quot;</span>
   )</code></pre></div>
-</section><section id="svm-icaiiee" class="slide level2">
-<h1>SVM ¤ÎºÇÅ¬²½½ÐÎÏ(È´¿è)</h1>
+</section><section id="svm-" class="slide level2">
+<h1>SVM の最適化出力(抜粋)</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elapsed =<span class="st"> </span><span class="fl">0.00</span>  Round =<span class="st"> </span><span class="dv">1</span>   gamma_opt =<span class="st"> </span><span class="fl">6.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">42.9050</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
 elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">2</span>   gamma_opt =<span class="st"> </span><span class="fl">6.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">12.0327</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
 elapsed =<span class="st"> </span><span class="fl">0.00</span>  Round =<span class="st"> </span><span class="dv">3</span>   gamma_opt =<span class="st"> </span><span class="fl">7.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">92.1573</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
 elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">4</span>   gamma_opt =<span class="st"> </span><span class="fl">9.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">18.3716</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
 elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">5</span>   gamma_opt =<span class="st"> </span><span class="fl">8.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">56.2588</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
-<span class="co"># ÃæÎ¬</span>
+<span class="co"># 中略</span>
 elapsed =<span class="st"> </span><span class="fl">0.00</span>  Round =<span class="st"> </span><span class="dv">19</span>  gamma_opt =<span class="st"> </span><span class="fl">2453.1625</span>   cost_opt =<span class="st"> </span><span class="fl">84.8863</span>  Value =<span class="st"> </span><span class="fl">0.3733</span>
 elapsed =<span class="st"> </span><span class="fl">0.00</span>  Round =<span class="st"> </span><span class="dv">20</span>  gamma_opt =<span class="st"> </span><span class="fl">1.e+05</span>  cost_opt =<span class="st"> </span><span class="fl">62.2435</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
 elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">21</span>  gamma_opt =<span class="st"> </span><span class="fl">1.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">23.6688</span>  Value =<span class="st"> </span><span class="fl">0.5867</span>
 
  Best Parameters Found:
 Round =<span class="st"> </span><span class="dv">15</span>  gamma_opt =<span class="st"> </span><span class="fl">1.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">79.5983</span>  Value =<span class="st"> </span><span class="fl">0.6133</span></code></pre></div>
-</section><section id="eoaaoie" class="slide level2">
-<h1>¥é¥ó¥À¥à¥Õ¥©¥ì¥¹¥È</h1>
+</section><section class="slide level2">
+<h1>ランダムフォレスト</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123</span>)
 
 mod &lt;-<span class="st"> </span><span class="kw">rf_opt</span>(
@@ -602,14 +602,14 @@ mod &lt;-<span class="st"> </span><span class="kw">rf_opt</span>(
   <span class="dt">test_label =</span> iris_test$Species,
   <span class="dt">mtry_range =</span> <span class="kw">c</span>(1L, 4L)
   )</code></pre></div>
-</section><section id="eoaaoieicaiiee" class="slide level2">
-<h1>¥é¥ó¥À¥à¥Õ¥©¥ì¥¹¥È¤ÎºÇÅ¬²½½ÐÎÏ(È´¿è)</h1>
+</section><section class="slide level2">
+<h1>ランダムフォレストの最適化出力(抜粋)</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">1</span>   num_trees_opt =<span class="st"> </span><span class="fl">288.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">4.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
 elapsed =<span class="st"> </span><span class="fl">0.03</span>  Round =<span class="st"> </span><span class="dv">2</span>   num_trees_opt =<span class="st"> </span><span class="fl">789.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">3.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
 elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">3</span>   num_trees_opt =<span class="st"> </span><span class="fl">410.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">3.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
 elapsed =<span class="st"> </span><span class="fl">0.04</span>  Round =<span class="st"> </span><span class="dv">4</span>   num_trees_opt =<span class="st"> </span><span class="fl">883.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">4.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
 elapsed =<span class="st"> </span><span class="fl">0.03</span>  Round =<span class="st"> </span><span class="dv">5</span>   num_trees_opt =<span class="st"> </span><span class="fl">941.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">3.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
-<span class="co"># ÃæÎ¬</span>
+<span class="co"># 中略</span>
 elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">19</span>  num_trees_opt =<span class="st"> </span><span class="fl">329.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">2.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
 elapsed =<span class="st"> </span><span class="fl">0.03</span>  Round =<span class="st"> </span><span class="dv">20</span>  num_trees_opt =<span class="st"> </span><span class="fl">955.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">2.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
 elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">21</span>  num_trees_opt =<span class="st"> </span><span class="fl">101.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">2.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
@@ -628,32 +628,32 @@ res1 &lt;-<span class="st"> </span><span class="kw">xgb_opt</span>(<span class="
                <span class="dt">classes =</span> <span class="dv">3</span>,
                <span class="dt">evalmetric =</span> <span class="st">&quot;merror&quot;</span>
 )</code></pre></div>
-</section><section id="xgboost-icaiiee" class="slide level2">
-<h1>XGboost ¤ÎºÇÅ¬²½½ÐÎÏ(È´¿è)</h1>
+</section><section id="xgboost-" class="slide level2">
+<h1>XGboost の最適化出力(抜粋)</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">1</span>   eta_opt =<span class="st"> </span><span class="fl">0.8729</span>    max_depth_opt =<span class="st"> </span><span class="fl">6.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">123.8761</span>  subsample_opt =<span class="st"> </span><span class="fl">0.2789</span>  bytree_opt =<span class="st"> </span><span class="fl">0.5343</span> Value =<span class="st"> </span><span class="fl">0.7467</span>
 elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">2</span>   eta_opt =<span class="st"> </span><span class="fl">0.5779</span>    max_depth_opt =<span class="st"> </span><span class="fl">6.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">144.4570</span>  subsample_opt =<span class="st"> </span><span class="fl">0.4523</span>  bytree_opt =<span class="st"> </span><span class="fl">0.4854</span> Value =<span class="st"> </span><span class="fl">0.6933</span>
 elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">3</span>   eta_opt =<span class="st"> </span><span class="fl">0.3202</span>    max_depth_opt =<span class="st"> </span><span class="fl">6.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">88.6309</span>   subsample_opt =<span class="st"> </span><span class="fl">0.1219</span>  bytree_opt =<span class="st"> </span><span class="fl">0.4910</span> Value =<span class="st"> </span><span class="fl">0.7467</span>
 elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">4</span>   eta_opt =<span class="st"> </span><span class="fl">0.5614</span>    max_depth_opt =<span class="st"> </span><span class="fl">4.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">76.5790</span>   subsample_opt =<span class="st"> </span><span class="fl">0.3092</span>  bytree_opt =<span class="st"> </span><span class="fl">0.6768</span> Value =<span class="st"> </span><span class="fl">0.9600</span>
 elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">5</span>   eta_opt =<span class="st"> </span><span class="fl">0.3955</span>    max_depth_opt =<span class="st"> </span><span class="fl">6.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">157.8434</span>  subsample_opt =<span class="st"> </span><span class="fl">0.3799</span>  bytree_opt =<span class="st"> </span><span class="fl">0.9856</span> Value =<span class="st"> </span><span class="fl">0.9867</span>
-<span class="co"># ÃæÎ¬</span>
+<span class="co"># 中略</span>
 elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">19</span>  eta_opt =<span class="st"> </span><span class="fl">0.6466</span>    max_depth_opt =<span class="st"> </span><span class="fl">5.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">82.4813</span>   subsample_opt =<span class="st"> </span><span class="fl">0.1647</span>  bytree_opt =<span class="st"> </span><span class="fl">0.6055</span> Value =<span class="st"> </span><span class="fl">0.9733</span>
 elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">20</span>  eta_opt =<span class="st"> </span><span class="fl">0.7080</span>    max_depth_opt =<span class="st"> </span><span class="fl">4.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">94.7421</span>   subsample_opt =<span class="st"> </span><span class="fl">0.7886</span>  bytree_opt =<span class="st"> </span><span class="fl">0.9739</span> Value =<span class="st"> </span><span class="fl">0.9867</span>
 elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">21</span>  eta_opt =<span class="st"> </span><span class="fl">0.1000</span>    max_depth_opt =<span class="st"> </span><span class="fl">6.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">93.1294</span>   subsample_opt =<span class="st"> </span><span class="fl">0.6490</span>  bytree_opt =<span class="st"> </span><span class="fl">0.9329</span> Value =<span class="st"> </span><span class="fl">1.0000</span>
 
 Best Parameters Found:
 Round =<span class="st"> </span><span class="dv">10</span>  eta_opt =<span class="st"> </span><span class="fl">0.4986</span>    max_depth_opt =<span class="st"> </span><span class="fl">5.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">94.3087</span>   subsample_opt =<span class="st"> </span><span class="fl">0.9980</span>  bytree_opt =<span class="st"> </span><span class="fl">0.9219</span> Value =<span class="st"> </span><span class="fl">1.0000</span></code></pre></div>
-</section><section id="uoeaia-svm" class="slide level2">
-<h1>°ú¿ô¤Ë¤Ä¤¤¤Æ(Îã: SVM)</h1>
+</section><section id="-svm" class="slide level2">
+<h1>引数について(例: SVM)</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">svm_opt</span>(
-  <span class="co"># ¥Ç¡¼¥¿¥»¥Ã¥È´ØÏ¢(ºÇÄã¸ÂÉ¬Í×)</span>
+  <span class="co"># データセット関連(最低限必要)</span>
   <span class="dt">train_data =</span> iris_train,
   <span class="dt">train_label =</span> iris_train$Species,
   <span class="dt">test_data =</span> iris_test,
   <span class="dt">test_label =</span> iris_test$Species,
-  <span class="co"># ¤³¤³¤«¤é¥Ï¥¤¥Ñ¡¼¥Ñ¥é¥á¡¼¥¿¤Î°ú¿ô</span>
+  <span class="co"># ここからハイパーパラメータの引数</span>
   <span class="dt">gamma_range =</span> <span class="kw">c</span>(<span class="dv">10</span> ^<span class="st"> </span>(-<span class="dv">5</span>), <span class="dv">10</span> ^<span class="st"> </span><span class="dv">5</span>),
   <span class="dt">c_range =</span> <span class="kw">c</span>(<span class="dv">10</span> ^<span class="st"> </span>(-<span class="dv">2</span>), <span class="dv">10</span> ^<span class="st"> </span><span class="dv">2</span>),
-  <span class="co"># ¤³¤³¤«¤é¥Ù¥¤¥ººÇÅ¬²½¤Î°ú¿ô</span>
+  <span class="co"># ここからベイズ最適化の引数</span>
   <span class="dt">init_points =</span> <span class="dv">20</span>,
   <span class="dt">n_iter =</span> <span class="dv">1</span>,
   <span class="dt">acq =</span> <span class="st">&quot;ei&quot;</span>,
@@ -662,12 +662,12 @@ Round =<span class="st"> </span><span class="dv">10</span>  eta_opt =<span class
   <span class="dt">kernel =</span> <span class="kw">list</span>(<span class="dt">type =</span> <span class="st">&quot;exponential&quot;</span>, <span class="dt">power =</span> <span class="dv">2</span>)
   )</code></pre></div>
 </section></section>
-<section><section id="to-do" class="titleslide slide level1"><h1>To Do</h1></section><section id="aeeceic" class="slide level2">
-<h1>¤Þ¤À³«È¯ÈÇ¤Ê¤Î¤Ç…</h1>
+<section><section id="to-do" class="titleslide slide level1"><h1>To Do</h1></section><section class="slide level2">
+<h1>まだ開発版なので…</h1>
 <ul>
-<li>¥¯¥í¥¹¥Ð¥ê¥Ç¡¼¥·¥ç¥ó¤Ø¤ÎÂÐ±þ</li>
-<li>SVM ¤Î¥«¡¼¥Í¥ëÄÉ²Ã</li>
-<li>°ú¿ô¤Î½¼¼Â</li>
+<li>クロスバリデーションへの対応</li>
+<li>SVM のカーネル追加</li>
+<li>引数の充実</li>
 </ul>
 </section></section>
 <section><section id="enjoy" class="titleslide slide level1"><h1>Enjoy!</h1></section></section>
