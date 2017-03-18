@@ -158,7 +158,7 @@ code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">library</span>(Matrix)
 <span class="kw">library</span>(rBayesianOptimization)
 
-odd.n&lt;-<span class="dv">2</span>*(<span class="dv">1</span>:<span class="dv">75</span>)-<span class="dv">1</span>
+odd.n &lt;-<span class="st"> </span><span class="dv">2</span>*(<span class="dv">1</span>:<span class="dv">75</span>)-<span class="dv">1</span>
 iris_train &lt;-<span class="st"> </span>iris[odd.n, ] <span class="co"># 奇数を訓練データ</span>
 iris_test &lt;-<span class="st"> </span>iris[-odd.n, ] <span class="co"># 偶数を検証データ</span></code></pre></div>
 </section><section id="-xgboost-1" class="slide level2">
@@ -194,7 +194,7 @@ opt_xgb &lt;-<span class="st"> </span><span class="kw">BayesianOptimization</spa
 <h3>読み込み</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MlBayesOpt)</code></pre></div>
 </section></section>
-<section><section id="-svm" class="titleslide slide level1"><h1>使い方(例: SVM)</h1></section><section id="svm" class="slide level2">
+<section><section class="titleslide slide level1"><h1>使い方</h1></section><section id="svm" class="slide level2">
 <h1>SVM</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123</span>)
 
@@ -271,7 +271,7 @@ elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span cla
 Best Parameters Found:
 Round =<span class="st"> </span><span class="dv">10</span>  eta_opt =<span class="st"> </span><span class="fl">0.4986</span>    max_depth_opt =<span class="st"> </span><span class="fl">5.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">94.3087</span>   subsample_opt =<span class="st"> </span><span class="fl">0.9980</span>  bytree_opt =<span class="st"> </span><span class="fl">0.9219</span> Value =<span class="st"> </span><span class="fl">1.0000</span></code></pre></div>
 </section><section id="-svm" class="slide level2">
-<h1>引数につい(例: SVM)</h1>
+<h1>引数について(例: SVM)</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">svm_opt</span>(
   <span class="co"># データセット関連(最低限必要)</span>
   <span class="dt">train_data =</span> iris_train,
@@ -288,17 +288,17 @@ Round =<span class="st"> </span><span class="dv">10</span>  eta_opt =<span class
   <span class="dt">kappa =</span> <span class="fl">2.576</span>,
   <span class="dt">eps =</span> <span class="fl">0.0</span>,
   <span class="dt">kernel =</span> <span class="kw">list</span>(<span class="dt">type =</span> <span class="st">&quot;exponential&quot;</span>, <span class="dt">power =</span> <span class="dv">2</span>)
-  )
-<span class="st">``</span>
-
-<span class="co"># To Do</span>
-## まだ開発版なので...
--<span class="st"> </span>クロスバリデーションへの対応
--<span class="st"> </span>SVM のカーネル追加
--<span class="st"> </span>引数の充実
-
-<span class="co"># Enjoy!</span></code></pre></div>
+  )</code></pre></div>
 </section></section>
+<section><section id="to-do" class="titleslide slide level1"><h1>To Do</h1></section><section class="slide level2">
+<h1>まだ開発版なので…</h1>
+<ul>
+<li>クロスバリデーションへの対応</li>
+<li>SVM のカーネル追加</li>
+<li>引数の充実</li>
+</ul>
+</section></section>
+<section><section id="enjoy" class="titleslide slide level1"><h1>Enjoy!</h1></section></section>
     </div>
   </div>
 

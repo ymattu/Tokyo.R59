@@ -57,7 +57,7 @@ library(xgboost)
 library(Matrix)
 library(rBayesianOptimization)
 
-odd.n<-2*(1:75)-1
+odd.n <- 2*(1:75)-1
 iris_train <- iris[odd.n, ] # 奇数を訓練データ
 iris_test <- iris[-odd.n, ] # 偶数を検証データ
 ```
@@ -106,7 +106,7 @@ devtools::install_github("ymattu/MlBayesOpt")
 library(MlBayesOpt)
 ```
 
-# 使い方(例: SVM)
+# 使い方
 ## SVM
 ```{r eval=FALSE}
 set.seed(123)
@@ -198,7 +198,7 @@ Best Parameters Found:
 Round = 10	eta_opt = 0.4986	max_depth_opt = 5.0000	nrounds_opt = 94.3087	subsample_opt = 0.9980	bytree_opt = 0.9219	Value = 1.0000
 ```
 
-## 引数につい(例: SVM)
+## 引数について(例: SVM)
 ```{r eval=FALSE}
 res <- svm_opt(
   # データセット関連(最低限必要)
@@ -217,7 +217,7 @@ res <- svm_opt(
   eps = 0.0,
   kernel = list(type = "exponential", power = 2)
   )
-``
+```
 
 # To Do
 ## まだ開発版なので...
