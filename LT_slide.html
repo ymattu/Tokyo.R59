@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="@y__mattu" />
+  <title>パッケージ作った(仮)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="LT_slide_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { font-weight: bold; } /* Keyword */
+code > span.dt { color: #800000; } /* DataType */
+code > span.dv { color: #0000ff; } /* DecVal */
+code > span.bn { color: #0000ff; } /* BaseN */
+code > span.fl { color: #800080; } /* Float */
+code > span.ch { color: #ff00ff; } /* Char */
+code > span.st { color: #dd0000; } /* String */
+code > span.co { color: #808080; font-style: italic; } /* Comment */
+code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
+code > span.fu { color: #000080; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #ff00ff; } /* SpecialChar */
+code > span.vs { color: #dd0000; } /* VerbatimString */
+code > span.ss { color: #dd0000; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #808080; font-style: italic; } /* Documentation */
+code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="LT_slide_files/reveal.js-3.3.0.1/css/theme/sky.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="for_revealjs.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="LT_slide_files/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">パッケージ作った(仮)</h1>
+  <h1 class="subtitle">Tokyo.R #59 LT</h1>
+    <h2 class="author"><span class="citation" data-cites="y__mattu">@y__mattu</span></h2>
+    <h3 class="date">2017/3/18</h3>
+</section>
+
+<section><section id="iae" class="titleslide slide level1"><h1>¤Ï¤¸¤á¤Ë</h1></section><section id="eo" class="slide level2">
+<h1>¼«¸Ê¾Ò²ð</h1>
+<div class="column1">
+<ul>
+<li>¾¾Â¼Í¥ºÈ(<span class="citation" data-cites="y__mattu">@y__mattu</span>)</li>
+<li>Âç³Ø 4 Ç¯À¸</li>
+<li>·×ÎÌ·ÐºÑ³Ø¡¢¥Ù¥¤¥ºÅý·×¡¢°ø²Ì¿äÏÀ¡¢¥Þ¡¼¥±¥Æ¥£¥ó¥°</li>
+<li>¸À¸ì: R, SAS, Python</li>
+<li>¶á¶·: ¤â¤¦¤¹¤°Â´¶È &amp; ¿Ê³Ø</li>
+</ul>
+</div>
+<div class="column2">
+<p><img src="img/twitter_icon.jpg" alt="icon" /></p>
+</div>
+</section></section>
+<section><section id="naoia" class="titleslide slide level1"><h1>¥Ñ¥Ã¥±¡¼¥¸¤òºî¤Ã¤¿</h1></section><section id="ina" class="slide level2">
+<h1>²¿¤Î¥Ñ¥Ã¥±¡¼¥¸¤«</h1>
+<ul>
+<li>MlBayesOpt(<a href="https://github.com/ymattu/MlBayesOpt" class="uri">https://github.com/ymattu/MlBayesOpt</a>)</li>
+<li>µ¡³£³Ø½¬¤Î¥Ù¥¤¥ººÇÅ¬²½¤Ë¤è¤ë¥Ñ¥é¥á¡¼¥¿¥Á¥å¡¼¥Ë¥ó¥°¤ò³Ú¤Ë½ñ¤¯¥Ñ¥Ã¥±¡¼¥¸</li>
+<li>SVM(RBF ¥«¡¼¥Í¥ë)¡¢¥é¥ó¥À¥à¥Õ¥©¥ì¥¹¥È¡¢ XGboost ¤ËÂÐ±þ</li>
+<li>¥Ù¡¼¥¹¥Ñ¥Ã¥±¡¼¥¸¤Ï SVM(e1071), RF(ranger), XGboost(xgboost)</li>
+<li>ÀºÅÙÉ¾²Á¤Ï¥Û¡¼¥ë¥É¡¦¥¢¥¦¥È¸¡¾Ú</li>
+</ul>
+</section><section id="ce" class="slide level2">
+<h1>ÇØ·Ê</h1>
+<ul>
+<li>¥Ù¥¤¥ººÇÅ¬²½¤Î¥Ñ¥Ã¥±¡¼¥¸¤Ï¤â¤È¤â¤È¤¢¤Ã¤¿({rBayesianOptimization})</li>
+<li>µ¡³£³Ø½¬¤Î¥Ñ¥é¥á¡¼¥¿¥Á¥å¡¼¥Ë¥ó¥°¤â¤Ç¤­¤¿</li>
+<li>¤Ç¤â¾¯¤·ÂçÊÑ¤À¤Ã¤¿</li>
+</ul>
+</section><section id="iciucaia-xgboost" class="slide level2">
+<h1>¤³¤ì¤Þ¤Ç¤Î¥Ù¥¤¥ººÇÅ¬²½(Îã: XGboost)</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(xgboost)
+<span class="kw">library</span>(Matrix)
+<span class="kw">library</span>(rBayesianOptimization)
+
+odd.n &lt;-<span class="st"> </span><span class="dv">2</span>*(<span class="dv">1</span>:<span class="dv">75</span>)-<span class="dv">1</span>
+iris_train &lt;-<span class="st"> </span>iris[odd.n, ] <span class="co"># ´ñ¿ô¤ò·±Îý¥Ç¡¼¥¿</span>
+iris_test &lt;-<span class="st"> </span>iris[-odd.n, ] <span class="co"># ¶ö¿ô¤ò¸¡¾Ú¥Ç¡¼¥¿</span></code></pre></div>
+</section><section id="iciucaia-xgboost-1" class="slide level2">
+<h1>¤³¤ì¤Þ¤Ç¤Î¥Ù¥¤¥ººÇÅ¬²½(Îã: XGboost)</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ¥Ç¡¼¥¿¥»¥Ã¥È¤ò xgboost ¤Ç°·¤¨¤ë·Á¼°¤ËÄ¾¤¹</span>
+train.mx &lt;-<span class="st"> </span><span class="kw">sparse.model.matrix</span>(Species ~., iris_train)
+test.mx &lt;-<span class="st"> </span><span class="kw">sparse.model.matrix</span>(Species ~<span class="st"> </span>., iris_test)
+dtrain &lt;-<span class="st"> </span><span class="kw">xgb.DMatrix</span>(train.mx, <span class="dt">label =</span> <span class="kw">as.integer</span>(iris_train$Species) -<span class="st"> </span><span class="dv">1</span>)
+dtest &lt;-<span class="st"> </span><span class="kw">xgb.DMatrix</span>(test.mx, <span class="dt">label =</span> <span class="kw">as.integer</span>(iris_test$Species) -<span class="st"> </span><span class="dv">1</span>)
+
+<span class="co"># ºÇÂç²½¤¹¤ë´Ø¿ô¤ÎºîÀ®</span>
+xgb_holdout &lt;-<span class="st"> </span>function(ex, mx, nr){
+    model &lt;-<span class="st"> </span><span class="kw">xgb.train</span>(<span class="dt">params=</span><span class="kw">list</span>(<span class="dt">objective =</span> <span class="st">&quot;multi:softmax&quot;</span>, <span class="dt">num_class =</span> <span class="dv">10</span>, <span class="dt">eval_metric =</span> <span class="st">&quot;mlogloss&quot;</span>,
+                                   <span class="dt">eta =</span> ex, <span class="dt">max_depth =</span> mx),
+                                   <span class="dt">data =</span> dtrain, <span class="dt">nrounds =</span> nr)
+    t.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model, <span class="dt">newdata =</span> dtest)
+    Pred &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">diag</span>(<span class="kw">table</span>(test$label, t.pred)))/<span class="kw">nrow</span>(test)
+    <span class="kw">list</span>(<span class="dt">Score =</span> Pred, <span class="dt">Pred =</span> Pred)
+}</code></pre></div>
+</section><section id="iciucaia-xgboost-2" class="slide level2">
+<h1>¤³¤ì¤Þ¤Ç¤Î¥Ù¥¤¥ººÇÅ¬²½(Îã: XGboost)</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ¥Ù¥¤¥ººÇÅ¬²½</span>
+opt_xgb &lt;-<span class="st"> </span><span class="kw">BayesianOptimization</span>(xgb_holdout,
+                                <span class="dt">bounds=</span><span class="kw">list</span>(<span class="dt">ex =</span> <span class="kw">c</span>(2L,5L), <span class="dt">mx =</span> <span class="kw">c</span>(4L,5L), <span class="dt">nr =</span> <span class="kw">c</span>(70L,160L)),
+                                <span class="dt">init_points =</span> <span class="dv">20</span>, <span class="dt">n_iter =</span> <span class="dv">1</span>, <span class="dt">acq =</span> <span class="st">&#39;ei&#39;</span>, <span class="dt">kappa =</span> <span class="fl">2.576</span>,
+                                <span class="dt">eps =</span> <span class="fl">0.0</span>, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>Ä¹¤¤! ¤â¤Ã¤ÈÃ»¤¯!</p>
+</section></section>
+<section><section id="mlbayesopt" class="titleslide slide level1"><h1>{MlBayesOpt}</h1></section><section id="oeeee" class="slide level2">
+<h1>¥¤¥ó¥¹¥È¡¼¥ë¤ÈÆÉ¤ß¹þ¤ß</h1>
+<h3 id="oee">¥¤¥ó¥¹¥È¡¼¥ë</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;ymattu/MlBayesOpt&quot;</span>)</code></pre></div>
+<h3 id="e">ÆÉ¤ß¹þ¤ß</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MlBayesOpt)</code></pre></div>
+</section></section>
+<section><section id="eey" class="titleslide slide level1"><h1>»È¤¤Êý</h1></section><section id="svm" class="slide level2">
+<h1>SVM</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123</span>)
+
+res &lt;-<span class="st"> </span><span class="kw">svm_opt</span>(
+  <span class="dt">train_data =</span> iris_train,
+  <span class="dt">train_label =</span> iris_train$Species,
+  <span class="dt">test_data =</span> iris_test,
+  <span class="dt">test_label =</span> iris_test$Species,
+  <span class="dt">acq =</span> <span class="st">&quot;ucb&quot;</span>
+  )</code></pre></div>
+</section><section id="svm-icaiiee" class="slide level2">
+<h1>SVM ¤ÎºÇÅ¬²½½ÐÎÏ(È´¿è)</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elapsed =<span class="st"> </span><span class="fl">0.00</span>  Round =<span class="st"> </span><span class="dv">1</span>   gamma_opt =<span class="st"> </span><span class="fl">6.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">42.9050</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
+elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">2</span>   gamma_opt =<span class="st"> </span><span class="fl">6.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">12.0327</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
+elapsed =<span class="st"> </span><span class="fl">0.00</span>  Round =<span class="st"> </span><span class="dv">3</span>   gamma_opt =<span class="st"> </span><span class="fl">7.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">92.1573</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
+elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">4</span>   gamma_opt =<span class="st"> </span><span class="fl">9.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">18.3716</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
+elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">5</span>   gamma_opt =<span class="st"> </span><span class="fl">8.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">56.2588</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
+<span class="co"># ÃæÎ¬</span>
+elapsed =<span class="st"> </span><span class="fl">0.00</span>  Round =<span class="st"> </span><span class="dv">19</span>  gamma_opt =<span class="st"> </span><span class="fl">2453.1625</span>   cost_opt =<span class="st"> </span><span class="fl">84.8863</span>  Value =<span class="st"> </span><span class="fl">0.3733</span>
+elapsed =<span class="st"> </span><span class="fl">0.00</span>  Round =<span class="st"> </span><span class="dv">20</span>  gamma_opt =<span class="st"> </span><span class="fl">1.e+05</span>  cost_opt =<span class="st"> </span><span class="fl">62.2435</span>  Value =<span class="st"> </span><span class="fl">0.3333</span>
+elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">21</span>  gamma_opt =<span class="st"> </span><span class="fl">1.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">23.6688</span>  Value =<span class="st"> </span><span class="fl">0.5867</span>
+
+ Best Parameters Found:
+Round =<span class="st"> </span><span class="dv">15</span>  gamma_opt =<span class="st"> </span><span class="fl">1.e+04</span>  cost_opt =<span class="st"> </span><span class="fl">79.5983</span>  Value =<span class="st"> </span><span class="fl">0.6133</span></code></pre></div>
+</section><section id="eoaaoie" class="slide level2">
+<h1>¥é¥ó¥À¥à¥Õ¥©¥ì¥¹¥È</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123</span>)
+
+mod &lt;-<span class="st"> </span><span class="kw">rf_opt</span>(
+  <span class="dt">train_data =</span> iris_train,
+  <span class="dt">train_label =</span> iris_train$Species,
+  <span class="dt">test_data =</span> iris_test,
+  <span class="dt">test_label =</span> iris_test$Species,
+  <span class="dt">mtry_range =</span> <span class="kw">c</span>(1L, 4L)
+  )</code></pre></div>
+</section><section id="eoaaoieicaiiee" class="slide level2">
+<h1>¥é¥ó¥À¥à¥Õ¥©¥ì¥¹¥È¤ÎºÇÅ¬²½½ÐÎÏ(È´¿è)</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">1</span>   num_trees_opt =<span class="st"> </span><span class="fl">288.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">4.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
+elapsed =<span class="st"> </span><span class="fl">0.03</span>  Round =<span class="st"> </span><span class="dv">2</span>   num_trees_opt =<span class="st"> </span><span class="fl">789.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">3.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
+elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">3</span>   num_trees_opt =<span class="st"> </span><span class="fl">410.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">3.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
+elapsed =<span class="st"> </span><span class="fl">0.04</span>  Round =<span class="st"> </span><span class="dv">4</span>   num_trees_opt =<span class="st"> </span><span class="fl">883.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">4.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
+elapsed =<span class="st"> </span><span class="fl">0.03</span>  Round =<span class="st"> </span><span class="dv">5</span>   num_trees_opt =<span class="st"> </span><span class="fl">941.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">3.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
+<span class="co"># ÃæÎ¬</span>
+elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">19</span>  num_trees_opt =<span class="st"> </span><span class="fl">329.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">2.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
+elapsed =<span class="st"> </span><span class="fl">0.03</span>  Round =<span class="st"> </span><span class="dv">20</span>  num_trees_opt =<span class="st"> </span><span class="fl">955.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">2.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
+elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">21</span>  num_trees_opt =<span class="st"> </span><span class="fl">101.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">2.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span>
+
+ Best Parameters Found:
+Round =<span class="st"> </span><span class="dv">1</span>   num_trees_opt =<span class="st"> </span><span class="fl">288.0000</span>    mtry_opt =<span class="st"> </span><span class="fl">4.0000</span>   Value =<span class="st"> </span><span class="fl">1.0000</span></code></pre></div>
+</section><section id="xgboost" class="slide level2">
+<h1>XGboost</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">71</span>)
+
+res1 &lt;-<span class="st"> </span><span class="kw">xgb_opt</span>(<span class="dt">train_data =</span> iris_train,
+               <span class="dt">train_label =</span> iris_train$Species,
+               <span class="dt">test_data =</span> iris_test,
+               <span class="dt">test_label =</span> iris_test$Species,
+               <span class="dt">objectfun =</span> <span class="st">&quot;multi:softmax&quot;</span>,
+               <span class="dt">classes =</span> <span class="dv">3</span>,
+               <span class="dt">evalmetric =</span> <span class="st">&quot;merror&quot;</span>
+)</code></pre></div>
+</section><section id="xgboost-icaiiee" class="slide level2">
+<h1>XGboost ¤ÎºÇÅ¬²½½ÐÎÏ(È´¿è)</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">1</span>   eta_opt =<span class="st"> </span><span class="fl">0.8729</span>    max_depth_opt =<span class="st"> </span><span class="fl">6.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">123.8761</span>  subsample_opt =<span class="st"> </span><span class="fl">0.2789</span>  bytree_opt =<span class="st"> </span><span class="fl">0.5343</span> Value =<span class="st"> </span><span class="fl">0.7467</span>
+elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">2</span>   eta_opt =<span class="st"> </span><span class="fl">0.5779</span>    max_depth_opt =<span class="st"> </span><span class="fl">6.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">144.4570</span>  subsample_opt =<span class="st"> </span><span class="fl">0.4523</span>  bytree_opt =<span class="st"> </span><span class="fl">0.4854</span> Value =<span class="st"> </span><span class="fl">0.6933</span>
+elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">3</span>   eta_opt =<span class="st"> </span><span class="fl">0.3202</span>    max_depth_opt =<span class="st"> </span><span class="fl">6.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">88.6309</span>   subsample_opt =<span class="st"> </span><span class="fl">0.1219</span>  bytree_opt =<span class="st"> </span><span class="fl">0.4910</span> Value =<span class="st"> </span><span class="fl">0.7467</span>
+elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">4</span>   eta_opt =<span class="st"> </span><span class="fl">0.5614</span>    max_depth_opt =<span class="st"> </span><span class="fl">4.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">76.5790</span>   subsample_opt =<span class="st"> </span><span class="fl">0.3092</span>  bytree_opt =<span class="st"> </span><span class="fl">0.6768</span> Value =<span class="st"> </span><span class="fl">0.9600</span>
+elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">5</span>   eta_opt =<span class="st"> </span><span class="fl">0.3955</span>    max_depth_opt =<span class="st"> </span><span class="fl">6.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">157.8434</span>  subsample_opt =<span class="st"> </span><span class="fl">0.3799</span>  bytree_opt =<span class="st"> </span><span class="fl">0.9856</span> Value =<span class="st"> </span><span class="fl">0.9867</span>
+<span class="co"># ÃæÎ¬</span>
+elapsed =<span class="st"> </span><span class="fl">0.01</span>  Round =<span class="st"> </span><span class="dv">19</span>  eta_opt =<span class="st"> </span><span class="fl">0.6466</span>    max_depth_opt =<span class="st"> </span><span class="fl">5.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">82.4813</span>   subsample_opt =<span class="st"> </span><span class="fl">0.1647</span>  bytree_opt =<span class="st"> </span><span class="fl">0.6055</span> Value =<span class="st"> </span><span class="fl">0.9733</span>
+elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">20</span>  eta_opt =<span class="st"> </span><span class="fl">0.7080</span>    max_depth_opt =<span class="st"> </span><span class="fl">4.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">94.7421</span>   subsample_opt =<span class="st"> </span><span class="fl">0.7886</span>  bytree_opt =<span class="st"> </span><span class="fl">0.9739</span> Value =<span class="st"> </span><span class="fl">0.9867</span>
+elapsed =<span class="st"> </span><span class="fl">0.02</span>  Round =<span class="st"> </span><span class="dv">21</span>  eta_opt =<span class="st"> </span><span class="fl">0.1000</span>    max_depth_opt =<span class="st"> </span><span class="fl">6.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">93.1294</span>   subsample_opt =<span class="st"> </span><span class="fl">0.6490</span>  bytree_opt =<span class="st"> </span><span class="fl">0.9329</span> Value =<span class="st"> </span><span class="fl">1.0000</span>
+
+Best Parameters Found:
+Round =<span class="st"> </span><span class="dv">10</span>  eta_opt =<span class="st"> </span><span class="fl">0.4986</span>    max_depth_opt =<span class="st"> </span><span class="fl">5.0000</span>  nrounds_opt =<span class="st"> </span><span class="fl">94.3087</span>   subsample_opt =<span class="st"> </span><span class="fl">0.9980</span>  bytree_opt =<span class="st"> </span><span class="fl">0.9219</span> Value =<span class="st"> </span><span class="fl">1.0000</span></code></pre></div>
+</section><section id="uoeaia-svm" class="slide level2">
+<h1>°ú¿ô¤Ë¤Ä¤¤¤Æ(Îã: SVM)</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">svm_opt</span>(
+  <span class="co"># ¥Ç¡¼¥¿¥»¥Ã¥È´ØÏ¢(ºÇÄã¸ÂÉ¬Í×)</span>
+  <span class="dt">train_data =</span> iris_train,
+  <span class="dt">train_label =</span> iris_train$Species,
+  <span class="dt">test_data =</span> iris_test,
+  <span class="dt">test_label =</span> iris_test$Species,
+  <span class="co"># ¤³¤³¤«¤é¥Ï¥¤¥Ñ¡¼¥Ñ¥é¥á¡¼¥¿¤Î°ú¿ô</span>
+  <span class="dt">gamma_range =</span> <span class="kw">c</span>(<span class="dv">10</span> ^<span class="st"> </span>(-<span class="dv">5</span>), <span class="dv">10</span> ^<span class="st"> </span><span class="dv">5</span>),
+  <span class="dt">c_range =</span> <span class="kw">c</span>(<span class="dv">10</span> ^<span class="st"> </span>(-<span class="dv">2</span>), <span class="dv">10</span> ^<span class="st"> </span><span class="dv">2</span>),
+  <span class="co"># ¤³¤³¤«¤é¥Ù¥¤¥ººÇÅ¬²½¤Î°ú¿ô</span>
+  <span class="dt">init_points =</span> <span class="dv">20</span>,
+  <span class="dt">n_iter =</span> <span class="dv">1</span>,
+  <span class="dt">acq =</span> <span class="st">&quot;ei&quot;</span>,
+  <span class="dt">kappa =</span> <span class="fl">2.576</span>,
+  <span class="dt">eps =</span> <span class="fl">0.0</span>,
+  <span class="dt">kernel =</span> <span class="kw">list</span>(<span class="dt">type =</span> <span class="st">&quot;exponential&quot;</span>, <span class="dt">power =</span> <span class="dv">2</span>)
+  )</code></pre></div>
+</section></section>
+<section><section id="to-do" class="titleslide slide level1"><h1>To Do</h1></section><section id="aeeceic" class="slide level2">
+<h1>¤Þ¤À³«È¯ÈÇ¤Ê¤Î¤Ç…</h1>
+<ul>
+<li>¥¯¥í¥¹¥Ð¥ê¥Ç¡¼¥·¥ç¥ó¤Ø¤ÎÂÐ±þ</li>
+<li>SVM ¤Î¥«¡¼¥Í¥ëÄÉ²Ã</li>
+<li>°ú¿ô¤Î½¼¼Â</li>
+</ul>
+</section></section>
+<section><section id="enjoy" class="titleslide slide level1"><h1>Enjoy!</h1></section></section>
+    </div>
+  </div>
+
+  <script src="LT_slide_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="LT_slide_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'convex', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        chalkboard: {
+          theme: 'whiteboard',
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'LT_slide_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
