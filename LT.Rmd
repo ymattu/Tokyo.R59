@@ -1,5 +1,6 @@
 ---
-title: "パッケージを作った(仮) <br> Tokyo.R #59 LT"
+title: "パッケージを作った(仮)"
+subtitle: "Tokyo.R #59 LT"
 author: "@y__mattu"
 date: "2017/3/18"
 output:
